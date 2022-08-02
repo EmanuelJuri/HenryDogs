@@ -1,0 +1,184 @@
+.home {
+    background-image: url('../../images/fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+        
+}
+.container_home{
+    display: flex;
+    align-items: center;    
+    align-content: center;
+    justify-content: center;
+    height: 60px;
+    padding: 10px;
+    
+    /* border: 1px solid orangered; */
+}
+
+.tittle{    
+    /* border: 1px solid blueviolet; */
+    color:rgb(18, 85, 94);
+    color:teal ;
+    font-family: 'Bakbak One', cursive;
+    font-size: 45px;
+    letter-spacing: 2px;
+}
+
+.icon_home{    
+    position: absolute;
+    left: 15px;
+    top: 15px;    
+    max-height: 10%;
+    max-width: 10%;
+    background: none;
+    /* border: 2px solid red; */
+}
+
+.icon_home:hover{
+    transition-delay: 0s;
+    color: indianred;
+    box-shadow: 0 0 20px rgb(221, 104, 8),
+                0 0 40px rgb(182, 120, 39),
+                0 0 80px rgb(135, 204, 241),
+                0 0 160px rgba(13, 153, 0, 0.068); 
+    
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-flow:wrap ;
+    /* border-top: #000000 solid;
+    border-bottom: #000000 solid; */
+    /* border: 1px solid blue;     */
+}
+
+.conteiner{
+    margin-top: 18px;
+    /* border: 2px solid blue; */
+}
+
+.create{
+    text-decoration: none;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    margin: 18px auto;
+    width: 250px;
+    height: auto;
+    /* background: linear-gradient(to right,rgba(223, 221, 196, 0.8), rgb(252, 243, 178)); */
+        
+    background-color: rgb(204, 204, 204);
+    border: 3px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 18px;
+    color: indianred;
+    color: teal;
+    font-weight: bold;
+    
+
+    /* border: 1px solid blueviolet; */
+}
+
+.create:hover{
+    transition-delay: 0s;
+    color: indianred;
+    box-shadow: 0 0 20px rgb(17, 105, 153),
+                0 0 40px rgb(122, 199, 240),
+                0 0 80px rgb(135, 204, 241),
+                0 0 160px rgba(13, 153, 0, 0.068); 
+    transform:scale(1.1);
+}
+
+.filter_order{
+    /* display: block; */
+    /* justify-content: center;
+    align-items: center; */
+    /* border: 1px solid blueviolet;     */
+}
+
+.temperament{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 15px;
+    color: indianred;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.size{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 15px;
+    color: indianred;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.origin{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 15px;
+    color: indianred;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.o_alphabetical{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 15px;
+    color: indianred;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.o_weight{
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(35, 152, 215);
+    border-radius: 1ex;
+    font-size: 15px;
+    color: indianred;
+    font-weight: bold;    
+}
+
+.container_serach_reload{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 3px solid blue; */
+    
+}
+
+.reload_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.icon_reload{
+    margin-right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.icon_reload:hover{
+    transform: scale(1.2);
+    
+}
+
+.pagination_foot{
+    margin-top: 15px;
+    /* border: 1px solid orangered; */
+}

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+
+*{
+    text-decoration: none;
+}
+
+.background {
+    background: url('../../images/home2.jpg');
+    /* background-repeat: no-repeat; */
+    height: 100vh;
+    width: 100%;    
+    /* overflow: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 3px solid red; */
+    
+}
+
+.container_ld{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    /* vertical-align: middle; */
+    width: 100%;
+    height: 100%;
+    
+    
+    /* border: 1px solid orangered; */
+}
+
+.welcome_title{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;    
+    margin: 0 0;
+    background: linear-gradient(to top,rgba(35, 152, 215, 0.8), rgb(224, 240, 250));    
+    /* text-shadow: 1px 1px 2px #000000; */
+    letter-spacing: 5px;
+    text-shadow: -1px -1px 0px indianred, 3px 3px 3px gainsboro, 6px 6px 0px teal;
+    font-family: 'Lemon', cursive;
+    
+    
+    font-size: 50px;
+    color: indianred;
+    color: black;
+    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    
+    /* border: 1px solid red; */
+}
+
+.button_intro {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    height: auto;
+    width: auto;
+    padding: 15px;
+    background-color: rgb(223, 221, 196);
+    border: 4px solid rgb(35, 152, 215);
+    border-radius: 10px;
+    font-size: 28px;
+    color:teal;    
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;  
+    text-decoration: none;
+    font-family: 'Bakbak One', cursive;
+    /* border: 1px solid black; */
+}
+
+.button_intro:hover {
+    background-color: rgb(251, 243, 180);
+    border: 4px solid indianred;
+    color:sienna ;
+	/* transition: .4s ease-in-out all; */
+    transition-delay: 0s;
+    /* color: indianred; */
+    box-shadow: 0 0 20px rgb(17, 105, 153),
+                0 0 40px rgb(122, 199, 240),
+                0 0 100px rgb(135, 204, 241),
+                0 0 190px rgba(13, 153, 0, 0.068); 
+    transform:scale(1.2);
+}

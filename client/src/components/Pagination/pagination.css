@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    background: linear-gradient(to bottom,rgba(35, 152, 215, 0.8), rgb(224, 240, 250));
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content:center;
+    margin: 0  0;
+    /* border: 1px solid black; */
+}
+
+
+.number {
+    background-color: rgb(223, 221, 196);
+    height: 5ex;
+    width: 5ex;
+    margin: .9ex;
+    
+    border-radius: 1ex;
+    border: transparent;
+    color: rgb(0, 0, 0);
+    transition: 0.3s;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.number:hover {
+    transition-delay: 0s;
+    color: rgb(255, 255, 255);
+    color: teal;
+    transform: translateY(1ex);
+    transform:scale(1.2);
+    font-weight: bold;
+
+}
+
