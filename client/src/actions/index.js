@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export function getDogs(){
     return async function(dispatch){
-        let json = await axios.get('http://localhost:3001/dogs') // aca es donde se produce la conexion front <-> back
+        let json = await axios.get('/dogs') // aca es donde se produce la conexion front <-> back
         return dispatch({
             type: 'GET_DOGS',
             payload: json.data
@@ -21,7 +21,7 @@ export function getDogs(){
 export function getByName(name){
     return async function(dispatch){
         try {
-            let json = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            let json = await axios.get(`/dogs?name=${name}`)
             return dispatch({
                 type: 'GET_BY_NAME',
                 payload: json.data
@@ -48,7 +48,7 @@ export function getByName(name){
 
 export function getTemperments(){
     return  function(dispatch){
-        return fetch ('http://localhost:3001/temperaments')
+        return fetch ('/temperaments')
         .then(response => response.json())
         .then(json => dispatch({type: 'GET_TEMPERAMENTS', payload: json}))
     }
@@ -67,7 +67,7 @@ export  function postDog(payload){
         "temperament": payload.temperament
     }
    // console.log(posteo);
-        const created = await axios.post('http://localhost:3001/dog',posteo);
+        const created = await axios.post('/dog',posteo);
    //     console.log('created',created);
         return dispatch({
             type : 'POST_DOG',
@@ -116,7 +116,7 @@ export function getDetail(id){
     // console.log(id, 'aca hay un detalle')
     return async function(dispatch){
         try {
-            let detail = await axios.get(`http://localhost:3001/dogs/${id}`)
+            let detail = await axios.get(`/dogs/${id}`)
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: detail.data
