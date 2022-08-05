@@ -6,7 +6,7 @@
 
 .background {
     background: linear-gradient(90deg, #DAD299 0.33%, #B0DAB9 100%);    
-
+    min-height: 100vh;
     position: relative;
     display: flex;    
     align-items: center;        
