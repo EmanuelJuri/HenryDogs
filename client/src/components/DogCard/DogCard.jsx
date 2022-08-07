@@ -14,15 +14,14 @@ Array.isArray(temperament) ?
 
   return(
       <div className="card">
-        <Link className="detail_button" to={`/home/${id}`}>
+        <Link className="detail_img" to={`/home/${id}`}>
           <h1 className="title_card">{name}</h1>
-          <img className="img_card" src={image} alt="img not found" /* width={'500px'} height={'282px'} */ />
-          <h3>Peso: {weight} Kg.</h3>
+          <img className="img_card" src={image} alt="img not found" /* width={'500px'} height={'282px'} */ />          
           <div className="box_temperaments">
-            <h3 className="box_temperaments">Temperamentos</h3>
+            <h3>Temperamentos</h3>
             <h5>{temp}</h5>
           </div>
-          {/* <Link className="detail_button" to={`/home/${id}`}>DETALLES</Link> */}
+          <Link className="detail_button" to={`/home/${id}`}>Detalles</Link>
         </Link>
       </div>
   )  

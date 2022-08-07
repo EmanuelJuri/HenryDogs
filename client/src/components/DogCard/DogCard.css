@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
 .card{
     background-image: url('../../images/fondo2.jpg');
-    /* background: #fff; */
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    border: 10px solid #ccc;
+    border: 2px solid #ccc;
     margin-bottom: 10px;
     transition: 0.2s;
     width: 500px;
@@ -22,29 +23,48 @@
     height: 282px;
 }
 
-.title_card{
-    /* border: 1px solid red; */
-    margin-top: 0;
-    color: indianred;
+.img_card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 40px -10px rgba(0,0,0,0.25);
+    border: 2px solid #3DACEF;
+    border-radius: 20px;
 }
 
+.title_card{
+    font-family: 'Carter One', sans-serif;   
+    font-size: 38px;
+    text-align: center;
+    color: #F56132;
+    margin: 0 0;
+}
 
 .box_temperaments{
-    /* border: 1px solid blueviolet; */
-    margin-top: 0;
-
+    margin: 10px 18px 0 18px;    
+    justify-content: center;
 }
 
-.detail_button{
-    /* border: 1px solid blueviolet; */
-    text-decoration: none;
+.detail_img{
     color: black;
 }
 
-.img_card:hover{
-    transform: scale(1.03);
-    box-shadow: 0 0 40px -10px rgba(0,0,0,0.25);
-    border: 2px solid rgb(35, 152, 215);
-    /* border: 5px solid #ccc; */
-    border-radius: 20px;
+.detail_button {
+    margin: 10px;
+    height: auto;
+    width: auto;
+    padding: 2px 18px;
+    background-color: #F56132;
+    border:none;
+    border-radius: 30px;
+    font-size: 20px;    
+    letter-spacing: 0.3px;
+    color:white;
+    cursor: pointer;
+    font-family: 'Bakbak One', cursive;
+}
+
+.detail_button:hover {    
+    background: linear-gradient(180deg, #3CB7DE 0%, #3FA3FF 100%);
+    color:white ;	
+    transition-delay: 0s;    
+    transform:scale(1.1);
 }

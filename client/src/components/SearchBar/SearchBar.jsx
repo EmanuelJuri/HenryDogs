@@ -3,17 +3,16 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import {getByName} from '../../actions';
-
+import reload from '../../images/reload1.jpg'
 import './SearchBar.css'
 
-export default function SearchBar(){
+export default function SearchBar({handleClick}){
     const dispatch = useDispatch()
     const [name, setName] = useState('')
 
     function handleInputChange(e){
         e.preventDefault()
-        setName(e.target.value)
-        console.log(name)
+        setName(e.target.value)        
     };
 
     function handleSubmit(e){
@@ -28,6 +27,13 @@ export default function SearchBar(){
 
     return(
         <div className='search_bar'>
+            <button className='reload_button' onClick={e => {handleClick(e)}}>
+                <img
+                    className="icon_reload"                            
+                    src={reload}
+                    alt=""
+                />                   
+            </button>
             <input 
                 className="input_search"
                 type="search" 

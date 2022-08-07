@@ -2,22 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 5ex;
-    height: 5ex; */
     
     /* border: 1px solid black; */
     
 }
 
 .input_search{
-    background-color: rgba(219, 218, 218, 0.322);
-    border: 2px solid rgb(35, 152, 215);
+    background-color: white;
+    border: none;    
     border-radius: 1ex;
     font-size: 18px;
-    color: indianred;
-    font-weight: bold;
-    /* margin-right: 10px; */
-    width: 250px;
+    color: black;
+    font-weight: bold;    
+    width: 80%;
+    height: 28px;
     padding-left: 10px;
     text-align: center;    
 }
@@ -28,16 +26,34 @@
     width: auto;    
     border: none;
     background: none;
-    font-size: 25px;
-    
+    font-size: 25px;    
 }
 
 .button_search:hover{
     transform: scale(1.2);
-
 }
 
 ::placeholder {
-    color:  rgb(187, 175, 175);;
-    
+    color: #3DACEF;    
  }
+
+
+ .reload_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.icon_reload{
+    margin-right: 10px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.icon_reload:hover{
+    transform: scale(1.2);
+    
+}

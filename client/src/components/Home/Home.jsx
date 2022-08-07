@@ -10,8 +10,8 @@ import Pagination from '../Pagination/Pagination';
 import SearchBar from '../SearchBar/SearchBar';
 
 import loading from '../../images/loading-load.gif'
-import home from '../../images/home2.png'
-import reload from '../../images/reload1.jpg'
+import home from '../../images/home.png'
+import add from '../../images/add-dog.svg'
 
 import './Home.css'
 
@@ -32,10 +32,10 @@ export default function Home(){
     
     //  1-------0-------8
     //  2-------9-------17
-    const pagination = (pageNumber)=>{
+    const pagination = (pageNumber)=>{        
         setCurrentPage(pageNumber)
     }
-
+    
     useEffect(()=>{
         dispatch(getDogs())
     },[dispatch])
@@ -48,7 +48,7 @@ export default function Home(){
         e.preventDefault();
         dispatch(getDogs());  //resetea
         setCurrentPage(1);
-    };
+    };    
 
     function handleFilterTemp(e){
         e.preventDefault();
@@ -77,69 +77,74 @@ export default function Home(){
 
     return(
         <div className='home'>
-            <div className='container_home'>
-                <Link   to={'/'}>
-                    <img
-                        className="icon_home"
-                        src={home}
-                        alt=""
-                    />
-                </Link>
-                <h1 className='tittle'>RAZAS DE PERROS</h1>            
-            </div>          
+            <div className='container_navbar'>   
 
-            <div>
-                <div className='container_serach_reload'>
-                    <button className='reload_button' onClick={e => {handleClick(e)}}>
+                <div className='container_home'>
+                    <Link   to={'/'}>
                         <img
-                            className="icon_reload"                            
-                            src={reload}
+                            className="icon_home"
+                            src={home}
                             alt=""
-                            />                   
-                    </button>
+                        />
+                    </Link>
+                </div>          
+                <div className='agrupation'>
+                    <div className='container_serach_reload'>
+                        <SearchBar
+                            handleClick={handleClick}
+                        />
+                    </div>
+                    <br />
+                    <div className='filter_order'>
 
-                    <SearchBar/>
-                </div>
-    <br />
-                <div className='filter_order'>
+                        <select className='dropdown' onChange={e=>handleFilterTemp(e)}>
+                                    <option disabled selected>Temperamentos</option>
+                                    <option value="All">Todos...</option>
+                                    {temperments.map(e=>{
+                                        return <option value={e.name}>{e.name}</option>
+                                    })}
+                        </select>
 
-                    <select className='temperament' onChange={e=>handleFilterTemp(e)}>
-                                <option disabled selected>Temperamentos</option>
-                                <option value="All">Todos...</option>
-                                {temperments.map(e=>{
-                                    return <option value={e.name}>{e.name}</option>
-                                })}
-                    </select>
+                        <select className='dropdown' onChange={e=>handleFilterOrigin(e)}>
+                            <option disabled selected>Origen</option>
+                            <option value="all">Todos</option>
+                            <option value="api">Existentes</option>
+                            <option value="created">Creados</option>
+                        </select>
 
-                    <select className='origin' onChange={e=>handleFilterOrigin(e)}>
-                        <option disabled selected>Origen</option>
-                        <option value="all">Todos</option>
-                        <option value="api">Existentes</option>
-                        <option value="created">Creados</option>
-                    </select>
-
-                    <select className='o_alphabetical' onChange={e=>handleSortName(e)}>
-                        <option value="default" disabled selected>Orden Alfabetico</option>
-                        <option value="asc">Ascendente → A-Z</option>
-                        <option value="des">Descendente → Z-A</option>
-                    </select>
-                    <select className='o_weight' onChange={e=>handleSortWeight(e)}>
-                        <option value="default" disabled selected>Orden por Peso</option>
-                        <option value="min">Peso minimo</option>
-                        <option value="max">Peso maximo</option>
-                    </select>
-                </div>
-
-                <Link className='create' to='/dog'>Añadir nueva Raza</Link>
-
-                <div className='pagination_foot'>
-                    <Pagination
-                        dogsPerPage={dogsPerPage}
-                        allDogs={allDogs.length}
-                        pagination={pagination}
-                    />
+                        <select className='dropdown' onChange={e=>handleSortName(e)}>
+                            <option value="default" disabled selected>Orden Alfabetico</option>
+                            <option value="asc">Ascendente A-Z</option>
+                            <option value="des">Descendente Z-A</option>
+                        </select>
+                        <select className='dropdown' onChange={e=>handleSortWeight(e)}>
+                            <option value="default" disabled selected>Orden por Peso</option>
+                            <option value="min">Peso minimo</option>
+                            <option value="max">Peso maximo</option>
+                        </select>
+                    </div>
                 </div>
 
+                <Link
+                    className='create'
+                    to='/dog'                    
+                    >
+                        <img
+                            className="icon_addDog"
+                            src={add}
+                            alt="add-dog"
+                        />
+                </Link>
+            </div>
+            <div className='pagination_foot'>
+                <Pagination
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs.length}
+                    pagination={pagination}
+                    currentPage={currentPage}
+                />
+            </div>
+            <div>
                 {currentDogs.length > 0 ? (
                     <div className='body'>{
                         currentDogs.map(el => {                            
@@ -161,7 +166,7 @@ export default function Home(){
                     )
                     :
                     (
-                        <div>
+                        <div className='img_loading'>
                         <img
                             src={loading}
                             alt="cargando..."
@@ -170,16 +175,16 @@ export default function Home(){
                         </div>
                     )
                 }
-
-                <div className='pagination_foot'>
-                    <Pagination
-                        dogsPerPage={dogsPerPage}
-                        allDogs={allDogs.length}
-                        pagination={pagination}
-                    />
-                </div>
-
             </div>
+            <div className='pagination_foot'>
+                <Pagination
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs.length}
+                    pagination={pagination}
+                    currentPage={currentPage}
+                />
+            </div>
+
         </div>
     )
 };
