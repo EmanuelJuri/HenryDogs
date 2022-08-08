@@ -4,7 +4,10 @@ import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {postDog, getTemperments} from '../../actions/index'
-
+import height from  '../../images/perroHeight.svg'
+import weight from  '../../images/scale-svgrepo.svg'
+import lifeSpan from  '../../images/birthday-cake.svg'
+import waitDog from '../../images/waitDog.svg'
 
 import './DogCreate.css'
 
@@ -56,6 +59,7 @@ export default function DogCreate() {
     const dispatch = useDispatch()
     const history = useHistory()
     const temperaments = useSelector(state => state.allTemperaments);
+    console.log('TEMPERAMENTOS', temperaments)
     const [errors, setErrors] = useState({})
     
     useEffect(()=>{
@@ -123,165 +127,37 @@ export default function DogCreate() {
             max_life_span: '',            
             image: '',
             temperament: []
-        })
-        // dispatch(getDogs());
+        })        
         history.push('/home')
     }
 
     return(
         <div className='container'>
-            <h1 className='create_tittle'>CREA TU RAZA</h1>            
+            <h1 className='create_tittle'>CREA TU RAZA</h1>
 
-            <form className='form' onSubmit={e=>handleSubmit(e)}>
-                <h4 className='tittle_input'>RAZA</h4>
-                <div className='box'>
-                    <div className='inline'>
-                        <label className='labels'>Nombre:</label>
-                        <input
-                            className='input'
-                            type="text"
-                            value= {input.name}
-                            name= 'name'
-                            onChange={(e) => handleChange(e)}
-                        />
-                    </div>
-                    {input.name === '' ? <a className="errors"> *Campo obligatorio </a>
-                        :
-                        <a className="errors2">✔</a>
-                    }
-                </div>
-
-                <div >
-                    <h4 className='tittle_input'>Altura</h4>
+            <div className='cardLeft'>
+                <form className='form' onSubmit={e=>handleSubmit(e)}>                
                     <div className='box'>
-                        <div className='inline'>
-                            <label className='labels'>Mínima:</label>
+                        <div className='inlineFirst'>
+                            <label className='labels'>NOMBRE:</label>
                             <input
-                                className='input'
+                                className='input_img'
                                 type="text"
-                                value= {input.min_height}
-                                name= 'min_height'
-                                placeholder="unidades en centímetros..."
+                                value= {input.name}
+                                name= 'name'
+                                placeholder="Raza..."
                                 onChange={(e) => handleChange(e)}
                             />
                         </div>
-                        {input.min_height==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.min_height ? <a className="errors">{errors.min_height}</a>
+                        {input.name === '' ? <a className="errors"> *Campo obligatorio </a>
                             :
                             <a className="errors2">✔</a>
                         }
                     </div>
+                    
                     <div className='box'>
-                        <div className='inline'>
-                            <label className='labels'>Máxima:</label>
-                            <input
-                                className='input'
-                                type="text"
-                                value= {input.max_height}
-                                name= 'max_height'
-                                placeholder="unidades en centímetros..."
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </div>
-                        {input.max_height==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.max_height ? <a className="errors">{errors.max_height}</a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <h4 className='tittle_input'>Peso</h4>
-                    <div className='box'>
-                    <div className='inline'>
-                            <label className='labels'>Mínimo:</label>
-                            <input
-                                className='input'
-                                type="text"
-                                value= {input.min_weight}
-                                name= 'min_weight'
-                                placeholder="unidades en kilogramos..."
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </div>
-                        {input.min_weight==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.min_weight ? <a className="errors">{errors.min_weight}</a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
-                    </div>
-                    <div className='box'>
-                    <div className='inline'>
-                            <label className='labels'>Máximo:</label>
-                            <input
-                                className='input'
-                                type="text"
-                                value= {input.max_weight}
-                                name= 'max_weight'
-                                placeholder="unidades en kilogramos..."
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </div>
-                        {input.max_weight==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.max_weight ? <a className="errors">{errors.max_weight}</a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <h4 className='tittle_input'>Esperanza de vida</h4>
-                    <div className='box'>
-                    <div className='inline'>
-                        <label className='labels'>Mínima:</label>
-                            <input
-                                className='input'
-                                type="text"
-                                value= {input.min_life_span}
-                                name= 'min_life_span'
-                                placeholder="unidades en años..."
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </div>
-                        {input.min_life_span==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.min_life_span ? <a className="errors">{errors.min_life_span}</a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
-                    </div>
-                    <div className='box'>
-                    <div className='inline'>
-                            <label className='labels'>Máxima:</label>
-                            <input
-                                className='input'
-                                type="text"
-                                value= {input.max_life_span}
-                                name= 'max_life_span'
-                                placeholder="unidades en años..."
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </div>
-                        {input.max_life_span==='' ? <a className="errors">*Campo obligatorio</a>
-                            :
-                            errors.max_life_span ? <a className="errors">{errors.max_life_span}</a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 className='tittle_input'>Imagen</h4>
-                    <div className='box'>
-                    <div className='inline'>
-                            <label className='labels'>Dirección URL:</label>
+                        <div className='inlineFirst'>
+                            <label className='labels'>IMAGEN</label>
                             <input
                                 className='input_img'
                                 type="url"
@@ -292,15 +168,162 @@ export default function DogCreate() {
                             />
                         </div>
                         {input.image !='' && errors.image !='' ? <a className="errors">{errors.image}</a>:''}
-                    </div>
-                </div>
+                    </div>                
 
-                <div>
-                    <h4 className='tittle_input'>Temepramentos</h4>
+                    <div className='altura'>
+                        <div className='columnasLeft'>
+                            <h4 className='tittle_input'>ALTURA</h4>
+                            <img src={height} alt="height-dog" /* className='imagesvg' *//>
+                        </div>
+                        <div className='columnas'>
+                            <div className='box'>
+                                <div className='inline'>
+                                    {/* <label className='labels'>Mínima:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.min_height}
+                                        name= 'min_height'
+                                        placeholder="mínima en centímetros..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.min_height==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.min_height ? <a className="errors">{errors.min_height}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                            <div className='box'>
+                                <div className='inline'>
+                                    {/* <label className='labels'>Máxima:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.max_height}
+                                        name= 'max_height'
+                                        placeholder="máxima en centímetros..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.max_height==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.max_height ? <a className="errors">{errors.max_height}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='altura'>
+                        <div className='columnasLeft'>
+                            <h4 className='tittle_input'>PESO</h4>
+                            <img src={weight} alt="weight-dog" /* className='imagesvg' *//>
+                        </div>
+                        <div className='columnas'>
+                            <div className='box'>
+                                <div className='inline'>
+                                    {/* <label className='labels'>Mínimo:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.min_weight}
+                                        name= 'min_weight'
+                                        placeholder="unidades en kilogramos..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.min_weight==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.min_weight ? <a className="errors">{errors.min_weight}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                            <div className='box'>
+                                <div className='inline'>
+                                    {/* <label className='labels'>Máximo:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.max_weight}
+                                        name= 'max_weight'
+                                        placeholder="unidades en kilogramos..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.max_weight==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.max_weight ? <a className="errors">{errors.max_weight}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='altura'>
+                        <div className='columnasLeft'>
+                            <h4 className='tittle_input'>ESPERANZA DE VIDA</h4>
+                            <img src={lifeSpan} alt="lifeSpan-dog" className='imagesvg'/>
+                        </div>
+                        <div className='columnas'>
+                            <div className='box'>
+                                <div className='inline'>
+                                {/* <label className='labels'>Mínima:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.min_life_span}
+                                        name= 'min_life_span'
+                                        placeholder="unidades en años..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.min_life_span==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.min_life_span ? <a className="errors">{errors.min_life_span}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                            <div className='box'>
+                                <div className='inline'>
+                                    {/* <label className='labels'>Máxima:</label> */}
+                                    <input
+                                        className='input'
+                                        type="text"
+                                        value= {input.max_life_span}
+                                        name= 'max_life_span'
+                                        placeholder="unidades en años..."
+                                        onChange={(e) => handleChange(e)}
+                                    />
+                                </div>
+                                {input.max_life_span==='' ? <a className="errors">*Campo obligatorio</a>
+                                    :
+                                    errors.max_life_span ? <a className="errors">{errors.max_life_span}</a>
+                                    :
+                                    <a className="errors2">✔</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div className='renderAdd'>
+                    <h1 className='tittle_name'>{input.name ? input.name : 'Nueva Raza'}</h1>
+                    <img src={input.image? input.image : waitDog} 
+                        alt="addImage"
+                        className='detailImg'
+                    />
                     <div className='box'>
                         <div className='inline'>
                             <label className='labels'>Seleccionelos:</label>
                             <select className='input_temp' onChange={e=>handleSelect(e)}>
+                                <option disabled selected>Temperamentos</option>
                                 {temperaments?.map((el) => {                        
                                     return(
                                         <option value={el.name}>{el.name}</option>                                
@@ -310,21 +333,23 @@ export default function DogCreate() {
                         </div>
                     </div> 
 
-                    <div className='box'>
-                    <div className='inline'></div>
-                        <ul className='temp_selected'>
-                        Temperamentos Seleccionados:                        
+                    <div className='box'>    
+                        <div className='temp_selected'>
+                            {/* Temperamentos Seleccionados:  */}                       
                             { input.temperament.length ? input.temperament.map((t)=>{                            
-                            return <ul value={t} key={t}> {t}
-                            <button className='delete_temps' value={t} onClick={(e)=>handleDelete(e)} >
-                            ❌
-                            </button></ul>
+                                return (
+                                <div value={t} key={t} > {t}
+                                    <button className='delete_temps' value={t} onClick={(e)=>handleDelete(e)} >
+                                    ❌
+                                    </button>
+                                </div>)
                             }):<li className='errors' > Debe selecionar al menos un temperamento!</li>}
-                        </ul>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div className='buttons'>                    
+            <div className='buttons'>                    
                     { //VALIDACION DE ESTADO PARA HABILITAR BOTON
                         input.name ===''|| input.min_height ===''|| input.max_height === ''|| input.min_weight ==='' || input.max_weight ===''
                         || input.min_life_span ===''|| input.max_life_span ===''
@@ -347,7 +372,6 @@ export default function DogCreate() {
                     }
                     <Link to={'/home'}><button className='button' >Volver</button></Link>
                 </div>
-            </form>            
         </div>
     )
 };

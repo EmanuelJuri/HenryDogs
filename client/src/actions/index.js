@@ -32,27 +32,27 @@ export function getByName(name){
     }
 };
 
-// export function getTemperments(){
-//     return async function(dispatch){
-//         try {
-//             let info = axios.get('http://localhost:3001/temperaments')
-//             return dispatch({
-//                 type: 'GET_TEMPERAMENTS',
-//                 payload: info.data
-//             })
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
-// };
-
 export function getTemperments(){
-    return  function(dispatch){
-        return fetch ('/temperaments')
-        .then(response => response.json())
-        .then(json => dispatch({type: 'GET_TEMPERAMENTS', payload: json}))
+    return async function(dispatch){
+        try {
+            let info = await axios('/temperaments')            
+            return dispatch({
+                type: 'GET_TEMPERAMENTS',
+                payload: info.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 };
+
+// export function getTemperments(){
+//     return  function(dispatch){
+//         return fetch ('/temperaments')
+//         .then(response => response.json())        
+//         .then(json => dispatch({type: 'GET_TEMPERAMENTS', payload: json}))
+//     }
+// };
 
 export  function postDog(payload){
     return async function (dispatch){

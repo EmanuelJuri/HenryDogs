@@ -99,11 +99,11 @@
 }
 
 .button_home {
+    background: linear-gradient(180deg, #3CB7DE 0%, #3FA3FF 100%);
     margin: 10px;
     height: auto;
     width: auto;
     padding: 2px 18px;
-    background-color: #F56132;
     border:none;
     border-radius: 30px;
     font-size: 25px;    
@@ -114,7 +114,7 @@
 }
 
 .button_home:hover {    
-    background: linear-gradient(180deg, #3CB7DE 0%, #3FA3FF 100%);
+    background: #F56132;
     color:white ;	
     transition-delay: 0s;    
     transform:scale(1.1);

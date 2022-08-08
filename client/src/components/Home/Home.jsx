@@ -20,8 +20,7 @@ export default function Home(){
     const allDogs = useSelector(state => state.dogs)
     const temperments = useSelector(state => state.allTemperaments);
         
-    // console.log(allDogs, 'aca estan los perros');
-    // console.log(temeperaments, 'aca estan los temperamentos');
+    // console.log(allDogs, 'aca estan los perros');    
 
     const [order, setOrder] = useState('')    
     const [currentPage, setCurrentPage] = useState(1)
@@ -100,7 +99,7 @@ export default function Home(){
                         <select className='dropdown' onChange={e=>handleFilterTemp(e)}>
                                     <option disabled selected>Temperamentos</option>
                                     <option value="All">Todos...</option>
-                                    {temperments.map(e=>{
+                                    {temperments?.map(e=>{
                                         return <option value={e.name}>{e.name}</option>
                                     })}
                         </select>
