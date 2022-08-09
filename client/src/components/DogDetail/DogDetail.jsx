@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { getDetail, cleanDogId } from '../../actions/index';
-import loading from '../../images/loading-load.gif'
+// import loading from '../../images/loading-load.gif'
+import loading from '../../images/loader.gif'
 import height from  '../../images/perroHeight.svg'
 import weight from  '../../images/scale-svgrepo.svg'
 import lifeSpan from  '../../images/birthday-cake.svg'
@@ -22,10 +23,7 @@ export default function Detail(props){
     },[dispatch, props.match.params.id])
 
     const myDog = useSelector(state => state.detail)
-    // const myDogname = useSelector(state => state.detail)
-    // console.log('#######', myDogname)
-    console.log('myDog ESTADO',myDog)
-    console.log('name', myDog.name &&myDog.name.length)
+
     return(
         <div className='background_detail'>
             <div /* className='cardContainer' */>                            
@@ -36,7 +34,7 @@ export default function Detail(props){
                         className='left'
                         key={myDog.id} >                    
                         <h1 className= {myDog.name&&myDog.name.length > 19 ? 'd_nameLong' : 'd_name'}>{myDog.name}</h1>                        
-                        <img className='detail_image' src={myDog.image} alt="img not found" />
+                        <img className='detail_image' src={myDog.image?myDog.image:loading} alt="img not found" />
                     </div>
 
                     <div className="description">

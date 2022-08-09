@@ -11,35 +11,47 @@ import waitDog from '../../images/waitDog.svg'
 
 import './DogCreate.css'
 
-function validate(input){
-
+function validate(input){    
     let errors = {}
 
-    if(!Number(input.min_height)){
-        errors.min_height='*debe ser un número';
-    }else if(input.max_height&&parseInt(input.min_height)>=parseInt(input.max_height)){
-        errors.max_height='*La altura máxima no puede ser inferior o igual a la mínima';
-    }
-
-    if(!Number(input.max_height)){
+    !input.name ? errors.name='*Campo obligatorio' : errors.name='';
+    
+    !input.min_height ? errors.min_height='*Campo obligatorio' : 
+    !Number(input.min_height) ? errors.min_height='*debe ser un número' :
+    input.max_height&&parseInt(input.min_height)>=parseInt(input.max_height) ? 
+    errors.max_height='*La altura máxima no puede ser inferior o igual a la mínima' : errors.min_height='';
+    
+    if(!input.max_height){
+        errors.max_height='*Campo obligatorio';
+    }else if(!Number(input.max_height)){
         errors.max_height='*debe ser un número';
     }
 
-    if(!Number(input.min_weight)){
+    if(!input.min_weight){
+        errors.min_weight='*Campo obligatorio';
+    }else if(!Number(input.min_weight)){
         errors.min_weight='*debe ser un número';
     }else if(input.max_weight&&parseInt(input.min_weight)>=parseInt(input.max_weight)){
         errors.max_weight='*El peso máximo no puede ser inferior o igual al mínimo';
     }
-    if(!Number(input.max_weight)){
+
+    if(!input.max_weight){
+        errors.max_weight='*Campo obligatorio';
+    }else if(!Number(input.max_weight)){
         errors.max_weight='*debe ser un número';
     }
 
-    if(!Number(input.min_life_span)){
+    if(!input.min_life_span){
+        errors.min_life_span='*Campo obligatorio';
+    }else if(!Number(input.min_life_span)){
         errors.min_life_span='*debe ser un número';
     } else if(input.max_life_span&&parseInt(input.min_life_span)>parseInt(input.max_life_span)){
         errors.max_life_span='*Máxima no puede ser inferior a Mínima';
     }
-    if(!Number(input.max_life_span)){
+
+    if(!input.max_life_span){
+        errors.max_life_span='*Campo obligatorio';
+    }else if(!Number(input.max_life_span)){
         errors.max_life_span='*debe ser un número';
     }else if(parseInt(input.max_life_span) > 22){
         errors.max_life_span='*debe ser menor o igual a 22 años';
@@ -50,23 +62,20 @@ function validate(input){
             errors.image = '*Ingrese una URL válida'
         }
 
-    }
-    return errors
-    
+    }    
+    return errors;    
 }
 
 export default function DogCreate() {
     const dispatch = useDispatch()
     const history = useHistory()
     const temperaments = useSelector(state => state.allTemperaments);
-    console.log('TEMPERAMENTOS', temperaments)
-    const [errors, setErrors] = useState({})
     
+    const [errors, setErrors] = useState({})
+        
     useEffect(()=>{
         dispatch(getTemperments())
-    },[dispatch])
-    
-    //console.log(temperaments, 'aca deberia ir un temeprmento')
+    },[dispatch])    
 
     const [input, setInput] = useState({
         name: '',
@@ -114,7 +123,6 @@ export default function DogCreate() {
 
     function handleSubmit(e){
         e.preventDefault()
-        //console.log(input, 'esto es un input')
         dispatch(postDog(input))
         alert('Se ha agregado la nueva raza!!!')
         setInput({
@@ -136,39 +144,40 @@ export default function DogCreate() {
             <h1 className='create_tittle'>CREA TU RAZA</h1>
 
             <div className='cardLeft'>
-                <form className='form' onSubmit={e=>handleSubmit(e)}>                
-                    <div className='box'>
-                        <div className='inlineFirst'>
-                            <label className='labels'>NOMBRE:</label>
-                            <input
-                                className='input_img'
-                                type="text"
-                                value= {input.name}
-                                name= 'name'
-                                placeholder="Raza..."
-                                onChange={(e) => handleChange(e)}
-                            />
+                <form className='form' onSubmit={e=>handleSubmit(e)}>
+                    <div className='box_labels'>
+                        <div className='box'>
+                            <div className='inlineFirst'>
+                                <label className='labels'>NOMBRE:</label>
+                                <input
+                                    className='input_img'
+                                    type="text"
+                                    value= {input.name}
+                                    name= 'name'
+                                    placeholder="Raza..."
+                                    onChange={(e) => handleChange(e)}
+                                />
+                            </div>
+                            {   input.name === '' ? <a className="errors">*Campo obligatorio</a> :                                
+                                <a className="validations"></a>
+                            }
                         </div>
-                        {input.name === '' ? <a className="errors"> *Campo obligatorio </a>
-                            :
-                            <a className="errors2">✔</a>
-                        }
+                        
+                        <div className='box'>
+                            <div className='inlineFirst'>
+                                <label className='labels'>IMAGEN</label>
+                                <input
+                                    className='input_img'
+                                    type="url"
+                                    value={input.image}
+                                    name="image"
+                                    placeholder="http://www.exampleimage.com"
+                                    onChange={(e) => handleChange(e)}                                
+                                />
+                            </div>
+                            {input.image !='' && errors.image !='' ? <a className="errors">{errors.image}</a>:''}
+                        </div>
                     </div>
-                    
-                    <div className='box'>
-                        <div className='inlineFirst'>
-                            <label className='labels'>IMAGEN</label>
-                            <input
-                                className='input_img'
-                                type="url"
-                                value={input.image}
-                                name="image"
-                                placeholder="http://www.exampleimage.com"
-                                onChange={(e) => handleChange(e)}                                
-                            />
-                        </div>
-                        {input.image !='' && errors.image !='' ? <a className="errors">{errors.image}</a>:''}
-                    </div>                
 
                     <div className='altura'>
                         <div className='columnasLeft'>
@@ -188,11 +197,9 @@ export default function DogCreate() {
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.min_height==='' ? <a className="errors">*Campo obligatorio</a>
-                                    :
-                                    errors.min_height ? <a className="errors">{errors.min_height}</a>
-                                    :
-                                    <a className="errors2">✔</a>
+                                {   input.name !== '' && input.min_height === '' ? <a className="errors">{errors.min_height}</a> :
+                                    errors.min_height ? <a className="errors">{errors.min_height}</a> :
+                                    <a className="validations"></a>
                                 }
                             </div>
                             <div className='box'>
@@ -207,11 +214,11 @@ export default function DogCreate() {
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.max_height==='' ? <a className="errors">*Campo obligatorio</a>
+                                {   input.min_height !== '' && input.max_height==='' ? <a className="errors">{errors.max_height}</a>
                                     :
                                     errors.max_height ? <a className="errors">{errors.max_height}</a>
                                     :
-                                    <a className="errors2">✔</a>
+                                    <a className="validations"></a>
                                 }
                             </div>
                         </div>
@@ -231,15 +238,15 @@ export default function DogCreate() {
                                         type="text"
                                         value= {input.min_weight}
                                         name= 'min_weight'
-                                        placeholder="unidades en kilogramos..."
+                                        placeholder="mínimo en kilogramos..."
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.min_weight==='' ? <a className="errors">*Campo obligatorio</a>
+                                {   input.max_height !=='' && input.min_weight==='' ? <a className="errors">{errors.min_weight}</a>
                                     :
                                     errors.min_weight ? <a className="errors">{errors.min_weight}</a>
                                     :
-                                    <a className="errors2">✔</a>
+                                    <a className="validations"></a>
                                 }
                             </div>
                             <div className='box'>
@@ -250,15 +257,15 @@ export default function DogCreate() {
                                         type="text"
                                         value= {input.max_weight}
                                         name= 'max_weight'
-                                        placeholder="unidades en kilogramos..."
+                                        placeholder="máximo en kilogramos..."
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.max_weight==='' ? <a className="errors">*Campo obligatorio</a>
+                                {   input.min_weight !=='' && input.max_weight==='' ? <a className="errors">{errors.max_weight}</a>
                                     :
                                     errors.max_weight ? <a className="errors">{errors.max_weight}</a>
                                     :
-                                    <a className="errors2">✔</a>
+                                    <a className="validations"></a>
                                 }
                             </div>
                         </div>
@@ -278,15 +285,15 @@ export default function DogCreate() {
                                         type="text"
                                         value= {input.min_life_span}
                                         name= 'min_life_span'
-                                        placeholder="unidades en años..."
+                                        placeholder="mínimo en años..."
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.min_life_span==='' ? <a className="errors">*Campo obligatorio</a>
+                                {   input.max_weight !=='' && input.min_life_span==='' ? <a className="errors">{errors.min_life_span}</a>
                                     :
                                     errors.min_life_span ? <a className="errors">{errors.min_life_span}</a>
                                     :
-                                    <a className="errors2">✔</a>
+                                    <a className="validations"></a>
                                 }
                             </div>
                             <div className='box'>
@@ -297,15 +304,15 @@ export default function DogCreate() {
                                         type="text"
                                         value= {input.max_life_span}
                                         name= 'max_life_span'
-                                        placeholder="unidades en años..."
+                                        placeholder="máximo en años..."
                                         onChange={(e) => handleChange(e)}
                                     />
                                 </div>
-                                {input.max_life_span==='' ? <a className="errors">*Campo obligatorio</a>
+                                {   input.min_life_span !=='' && input.max_life_span==='' ? <a className="errors">{errors.max_life_span}</a>
                                     :
                                     errors.max_life_span ? <a className="errors">{errors.max_life_span}</a>
                                     :
-                                    <a className="errors2">✔</a>
+                                    <a className="validations"></a>
                                 }
                             </div>
                         </div>
@@ -320,7 +327,7 @@ export default function DogCreate() {
                         className='detailImg'
                     />
                     <div className='box'>
-                        <div className='inline'>
+                        <div className='inline_temp'>
                             <label className='labels'>Seleccionelos:</label>
                             <select className='input_temp' onChange={e=>handleSelect(e)}>
                                 <option disabled selected>Temperamentos</option>
@@ -338,7 +345,7 @@ export default function DogCreate() {
                             {/* Temperamentos Seleccionados:  */}                       
                             { input.temperament.length ? input.temperament.map((t)=>{                            
                                 return (
-                                <div value={t} key={t} > {t}
+                                <div className='temp_selected' value={t} key={t} > {t}
                                     <button className='delete_temps' value={t} onClick={(e)=>handleDelete(e)} >
                                     ❌
                                     </button>
@@ -358,16 +365,19 @@ export default function DogCreate() {
 
                         ||!input.temperament.length ?                        
                             <button
-                                className='button_block'
-                                type="submit"
-                                disabled='true'>
-                                    <span> Errores en el Fromulario </span>
+                                onClick={e=>handleSubmit(e)}
+                                // disabled='true'
+                                className='button_block'                                
+                            >
+                                <span> Errores en el Fromulario </span>
                             </button>
                         :
                         <button
+                            onClick={e=>handleSubmit(e)}
                             className='button'
-                            type="submit" >
-                                <span>Crear RAZA</span>
+                            type="submit"
+                        >
+                            <span>Crear</span>
                         </button>
                     }
                     <Link to={'/home'}><button className='button' >Volver</button></Link>

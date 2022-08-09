@@ -59,8 +59,7 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 dogs: temperamentFilter,
             }
-        case 'ORDER_BY_NAME':
-            console.log(action.payload)
+        case 'ORDER_BY_NAME':            
             const sortArray = action.payload === 'asc' ?
                 state.dogs.sort(function(a, b){
                     if(a.name > b.name) return 1;

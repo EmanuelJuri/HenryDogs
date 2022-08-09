@@ -9,7 +9,7 @@ import DogCard from '../DogCard/DogCard';
 import Pagination from '../Pagination/Pagination';
 import SearchBar from '../SearchBar/SearchBar';
 
-import loading from '../../images/loading-load.gif'
+import loading from '../../images/loader.gif'
 import home from '../../images/home.png'
 import add from '../../images/add-dog.svg'
 
