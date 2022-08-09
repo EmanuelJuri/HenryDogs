@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import error from '../../images/notfound.png'
 
 import './ErrorNotFound.css'
@@ -8,7 +9,7 @@ import './ErrorNotFound.css'
 export default function Error404(){
     return(
         <div className='background_error'>
-            {/* <img src={error} alt="img not found!" /> */}
+            <img src={error} alt="img not found!" className="image404"/>
             <div className='container_err'>                
                 <Link to='/home'>
                     <button className='button_intro'>HOME</button>

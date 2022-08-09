@@ -12,6 +12,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import loading from '../../images/loader.gif'
 import home from '../../images/home.png'
 import add from '../../images/add-dog.svg'
+import about from '../../images/about.png'
 
 import './Home.css'
 
@@ -86,7 +87,15 @@ export default function Home(){
                             alt=""
                         />
                     </Link>
-                </div>          
+
+                    <Link   to={'/about'}>
+                        <img
+                            className="about"
+                            src={about}
+                            alt=""
+                        />
+                    </Link>
+                </div> 
                 <div className='agrupation'>
                     <div className='container_serach_reload'>
                         <SearchBar

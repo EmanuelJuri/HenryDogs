@@ -24,6 +24,7 @@
     max-height: 100%;
     max-width: 100%;
     background: none;
+    margin: 0% 70px 0 0;
 }
 
 .create{
@@ -72,4 +73,9 @@
 
 .img_loading{    
     min-height: 100vh;    
+}
+
+.carga{
+    border-radius: 30px;
+    max-height: 500px;    
 }

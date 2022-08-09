@@ -1,22 +1,21 @@
 .background_error{
-    background: url('../../images/notfound.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-attachment: fixed; */
-    height: 100vh;
-    width: 100%;
-    overflow: auto;
+    background: linear-gradient(287.78deg, #0D112E 0%, #0D112E 29.76%, #21294E 48.82%, #262E55 66.17%, #262E55 92.24%);
+    height: 100vh;    
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    
-    /* border: 3px solid red; */
-    
+    justify-content: center;
+    align-items: center;    
+}
+
+.image404{
+    overflow: auto;
+    border-radius: 30px;
+    /* border: 3px solid blueviolet; */
 }
 
 .container_err{
     display: flex;
     align-items: center;
     /* justify-content: center; */
+    /* border: 3px solid red; */
 }
