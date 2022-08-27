@@ -2,7 +2,9 @@
 
 # Individual Project - Henry Dogs
 
-<img height="200" src="./dog.png" />
+<img src="https://user-images.githubusercontent.com/76783198/184228274-40a58435-e797-48ba-b6cf-e52aa99d3329.png"   />
+<img src="https://user-images.githubusercontent.com/76783198/184225656-63eb4e40-4881-48eb-bd86-c027602173a5.png"  />
+<img src="https://user-images.githubusercontent.com/76783198/184225936-7c59268c-39cf-41ad-8814-7c812aebb098.png"   />
 
 ## Objetivos del Proyecto
 
